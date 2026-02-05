@@ -89,7 +89,6 @@ button:hover {
             <button type="submit">Iniciar Sesión</button>
         </form>
         <p id="message"></p>
-        <audio id="musica" src="https://res.cloudinary.com/dpsof3xob/video/upload/v1770267452/Euphoria_-_BTS_v7gavj.mp3"></audio>
     </div>
 
     <script>
@@ -99,15 +98,12 @@ button:hover {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const message = document.getElementById('message');
-    const song = document.getElementById('musica');
 
     // Validación simple (puedes personalizar esto)
     if (username === "adriana" && password === "01052026") {
         message.style.color = "green";
         message.textContent = "Bienvenida mi amor 💖";
 
-        // Música (la configuras tú)
-        song.play();
 
         // Redirección al otro HTML
         setTimeout(() => {
