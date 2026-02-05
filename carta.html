@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nuestro Primer Mes ❤️</title>
+
+<style>
+/* ====== FONDO ====== */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+/* ====== TARJETA ====== */
+.card {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    animation: aparecer 1.2s ease;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== TEXTO ====== */
+h1 {
+    color: #ff4d6d;
+    font-size: 2.4em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #666;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+p {
+    color: #444;
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+
+/* ====== CORAZÓN CENTRAL ====== */
+.heart {
+    font-size: 3.2em;
+    animation: latido 1.5s infinite;
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
+
+/* ====== BOTÓN ====== */
+.btn {
+    margin-top: 25px;
+    padding: 12px 30px;
+    background: #ff4d6d;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #e63950;
+    transform: scale(1.08);
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 0.95em;
+    color: #777;
+}
+
+/* ====== CORAZONES FLOTANTES ====== */
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    animation: flotar 8s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes flotar {
+    from {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-120vh) translateX(30px);
+        opacity: 1;
+    }
+}
+
+/* ====== ESTRELLAS ====== */
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: brillo 2s infinite alternate;
+}
+
+@keyframes brillo {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* ====== CONFETI ====== */
+.confetti {
+    position: absolute;
+    width: 8px;
+    height: 14px;
+    animation: caer 4s linear infinite;
+}
+
+@keyframes caer {
+    from {
+        transform: translateY(-10vh) rotate(0deg);
+    }
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TARJETA -->
+<div class="card">
+    <div class="heart">❤️</div>
+
+    <h1>Feliz Primer Mes</h1>
+    <h2>Un mes desde que empezó algo hermoso</h2>
+
+    <p>
+        Hoy cumplimos nuestro primer mes,  
+        y aunque parezca poquito tiempo,  
+        ha sido suficiente para llenar mis días de sonrisas
+        y momentos que no quiero olvidar.
+    </p>
+
+    <p>
+        Gracias por tu cariño, por tu forma de ser,
+        por cada detalle y por hacer que todo se sienta tan bonito.
+        Este es solo el comienzo de algo que quiero seguir viviendo contigo.
+    </p>
+
+    <p>
+        Que vengan muchos meses más,
+        muchas risas, abrazos y recuerdos juntos.
+    </p>
+
+    <button class="btn">Siempre contigo 💕</button>
+
+    <div class="footer">
+        Hecho con amor solo para ti ✨
+    </div>
+</div>
+
+<!-- EFECTOS -->
+<script>
+// Corazones flotantes
+for (let i = 0; i < 18; i++) {
+    let heart = document.createElement("div");
+    heart.className = "floating-heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (6 + Math.random() * 5) + "s";
+    document.body.appendChild(heart);
+}
+
+// Estrellas
+for (let i = 0; i < 35; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.width = star.style.height = (2 + Math.random() * 3) + "px";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(star);
+}
+
+// Confeti
+const colores = ["#ff4d6d", "#ffd166", "#f72585", "#b5179e"];
+for (let i = 0; i < 25; i++) {
+    let confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.background = colores[Math.floor(Math.random() * colores.length)];
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.animationDuration = (3 + Math.random() * 3) + "s";
+    document.body.appendChild(confetti);
+}
+</script>
+
+</body>
+</html>
