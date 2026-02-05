@@ -195,6 +195,22 @@ p {
 }
 
 }
+
+.tiempo {
+    margin-top: 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ff4d6d;
+    animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
 </style>
 </head>
 
@@ -229,8 +245,9 @@ p {
         Te amo mucho mi amor, nunca lo olvides
     </p>
 
-    <div id="contador" class="contador">
-    💕 Llevamos juntos:
+    <div class="contador">
+    💕 Tiempo juntos
+    <div id="tiempo" class="tiempo"></div>
     </div>
 
 
@@ -294,38 +311,27 @@ btn.addEventListener("click", () => {
 const inicio = new Date(2026, 0, 5, 23, 4, 0);
 // 5 de enero – 11:04 PM
 
+function pad(n) {
+    return n.toString().padStart(2, "0");
+}
+
 function actualizarContador() {
     const ahora = new Date();
-    let diferencia = ahora - inicio;
+    let diff = ahora - inicio;
 
-    let segundos = Math.floor(diferencia / 1000);
-    let minutos = Math.floor(segundos / 60);
-    let horas = Math.floor(minutos / 60);
-    let dias = Math.floor(horas / 24);
-    let meses = Math.floor(dias / 30);
+    let s = Math.floor(diff / 1000);
+    let m = Math.floor(s / 60);
+    let h = Math.floor(m / 60);
+    let d = Math.floor(h / 24);
+    let mo = Math.floor(d / 30);
 
-    dias %= 30;
-    horas %= 24;
-    minutos %= 60;
-    segundos %= 60;
+    d %= 30;
+    h %= 24;
+    m %= 60;
+    s %= 60;
 
-    const contador = document.getElementById("contador");
-
-    contador.innerHTML = `
-        💕 Llevamos juntos:<br>
-        <strong>
-        ${meses} mes${meses !== 1 ? 'es' : ''} · 
-        ${dias} día${dias !== 1 ? 's' : ''} · 
-        ${horas} hora${horas !== 1 ? 's' : ''} · 
-        ${minutos} minuto${minutos !== 1 ? 's' : ''} · 
-        ${segundos} segundo${segundos !== 1 ? 's' : ''}
-        </strong>
-    `;
-
-    // micro-animación suave
-    contador.style.animation = "none";
-    contador.offsetHeight;
-    contador.style.animation = "aparecerSuave 0.5s ease";
+    document.getElementById("tiempo").textContent =
+        `${pad(mo)}m ${pad(d)}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
 }
 
 actualizarContador();
